@@ -4,9 +4,9 @@
 
 <div class="container">
     <!--looping through photoGallery-->
-    {% for image_item in photoGallery %}
+    {% for image_item in gallery %}
     <div class="row">
-        <div class="col-4">
+        <div class="col">
             <div class="card mb-4 shadow-sm" style="width:20rem;height:23rem;">
                 <div class="card-header">{{image_item.name}}</div>
                 <div class="card-body">
@@ -26,6 +26,10 @@
             
         </div>
     </div>
+<script>
+
+</script>
+
     {% empty %}
     <div class="row">
         <h2 class="text-center">There No Image Items</h2>

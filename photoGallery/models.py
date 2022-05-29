@@ -49,6 +49,7 @@ class Image(models.Model):
         
     def delete_image(self):
         self.delete()
+        
     def get_image_by_id(cls):
-        images = cls.objects.get(image_id=id)
+        images = cls.objects.get(id =id)
         return images
