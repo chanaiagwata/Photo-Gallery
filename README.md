@@ -4,11 +4,11 @@
 
 * [Overall Description](https://github.com/chanaiagwata/Photo-Gallery/tree/master#overall-project-description)
 
-* [Setup Instructions](https://github.com/chanaiagwata/Photo-Gallery/edit/master/README.md#setup-instructions)
+* [Setup Instructions](https://github.com/chanaiagwata/Photo-Gallery/tree/master/#setup-instructions)
 
-* [License](https://github.com/chanaiagwata/Photo-Gallery/edit/master/README.md#license)
+* [License](https://github.com/chanaiagwata/Photo-Gallery/tree/master/#license)
 
-* [Author's Info](https://github.com/chanaiagwata/Photo-Gallery/edit/master/README.md#authors-info)
+* [Author's Info](https://github.com/chanaiagwata/Photo-Gallery/tree/master/#authors-info)
 
 ## Overall Project Description
 <p>This is a personal blogging website that allows users to create and share their opinions and other users can comment on them.</p>
