@@ -9,16 +9,16 @@ import datetime as dt
 class LocationTestClass(TestCase):
     # Set up method
     def setUp(self):
-        self.loc1= Location(name = 'Lamu')
+        self.locations= Location(name = 'Lamu')
         
 # Testing  instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.loc1,Location))
+        self.assertTrue(isinstance(self.locations,Location))
 
 
 class CategoryTestClass(TestCase):
     def setUp(self):
-        self.cat1 = Category(name = 'Food')
+        self.categories = Category(name = 'Food')
 
 
 
