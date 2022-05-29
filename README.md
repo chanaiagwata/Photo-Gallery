@@ -26,7 +26,7 @@
 * Search photo by category
 * Can copy link and share
 
-![screenshot]()
+![screenshot](https://raw.githubusercontent.com/chanaiagwata/Photo-Gallery/master/media/screenshot.png)
 ### Languages and Frameworks
 * HTML
 * CSS
