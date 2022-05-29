@@ -11,7 +11,7 @@
 * [Author's Info](https://github.com/chanaiagwata/Photo-Gallery/tree/master/#authors-info)
 
 ## Overall Project Description
-<p>This is a personal blogging website that allows users to create and share their opinions and other users can comment on them.</p>
+<p>This is a photo gallery website that allows users to view uploaded photos based on category and location.</p>
 
 ### User Stories
 * View different photos that interest me.
