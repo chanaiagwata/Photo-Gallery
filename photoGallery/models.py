@@ -26,6 +26,12 @@ class Location(models.Model):
     
     def __str__(self):
         return self.name
+    
+    def save_location(self):
+        self.save()
+        
+    def delete_location(self):
+        self.delete()
 
 class Image(models.Model):
     name = models.CharField(max_length =80)
@@ -38,5 +44,11 @@ class Image(models.Model):
     
     def __str__(self):
         return self.name
-
-    
+    def save_image(self):
+        self.save()
+        
+    def delete_image(self):
+        self.delete()
+    def get_image_by_id(cls):
+        images = cls.objects.get(image_id=id)
+        return images
