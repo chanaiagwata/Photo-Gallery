@@ -2,11 +2,11 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url('^$', views.index,name = 'indexpage'),
-    url('about', views.about, name='aboutpage'),
-    url('gallery', views.gallery, name='gallerypage'),
-    url('category/art', views.art, name = 'artpage'),
-    url('category/food', views.food, name = 'foodpage'),
-    url('category/nature', views.nature, name = 'naturepage'),
-    url('category/sports', views.sports, name = 'sportspage')
+    url(r'^$', views.index, name = 'indexpage'),
+    url(r'about', views.about, name='aboutpage'),
+    url(r'gallery', views.gallery, name='gallerypage'),
+    url(r'category/art', views.art, name = 'artpage'),
+    url(r'category/food', views.food, name = 'foodpage'),
+    url(r'category/nature', views.nature, name = 'naturepage'),
+    url(r'category/sports', views.sports, name = 'sportspage')
 ]
