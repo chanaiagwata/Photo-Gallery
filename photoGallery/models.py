@@ -53,3 +53,7 @@ class Image(models.Model):
     def get_image_by_id(cls):
         images = cls.objects.get(id =id)
         return images
+    @classmethod
+    def search_by_name(cls,search_term):
+        image = cls.objects.filter(name__icontains=search_term)
+        return image

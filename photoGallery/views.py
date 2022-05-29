@@ -1,6 +1,7 @@
-from unicodedata import category
+from django.http  import Http404
 from .models import Image, Location, Category
 from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def index(request):
     
@@ -35,3 +36,23 @@ def sports(request):
     sports_category = Category.objects.get(id = 2)
     sports = Image.objects.all().filter(category=sports_category)
     return render(request, 'category/sports.html', {'sports':sports})
+
+def search_results(request):
+
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+    
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,"image.html", {"image":image})
