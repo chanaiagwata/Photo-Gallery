@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{block.super}}
-<h3 class="text-center">Your are viewing Art Category</h3>
+
+
+<br>
+<br>
+
+<div class="gallery">
+    <div class="container">
+        <h3 class="text-center">Your are viewing Art Category</h3>
+        <div class="row">
+        {% for image_item in art %}
+        {% include 'categoryData.html'%}
+        {% include 'modals.html' %}
+        {% empty %}
+        <h3>No images posted under this category</h3>
+        {% endfor %}
+      </div>
 {% endblock %}

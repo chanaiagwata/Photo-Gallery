@@ -1,41 +1,31 @@
-
-
 {% block content %}
-
 <div class="container">
     <!--looping through photoGallery-->
-    {% for image_item in gallery %}
     <div class="row">
-        <div class="col">
-            <div class="card mb-4 shadow-sm" style="width:20rem;height:23rem;">
-                <div class="card-header">{{image_item.name}}</div>
-                <div class="card-body">
+        {% for image_item in gallery %}
+        <div class="col-lg-4 col-md-2 col-sm-12">
+            <div class="card mb-5 shadow-sm">
+                <div class="card-header" style="font-family:Raleway; font-size:24px; font-weight:700; color:#5D4037; margin-top:20px;">{{image_item.name}}</div>
+                <div class="card-body" style="width:23rem;height:40rem; margin:40px 0; font-family:Raleway; -webkit-font-smoothing:antialiased;">
                     <img src="{{image_item.photo.url}}"class="img-responsive" alt="Image">
                     <br>
                     <p class="card-text">
                         {{image_item.description}}
                     </p>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#myModal{{image.id}}">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalid{{image_item.id}}">View</button>
 
                     </div>
-                    <small class="text-muted">Posted : {{image_item.pub_date|timesince}}</small>
+                    <small class="text-muted">Posted : {{image_item.pub_date|timesince}} ago.</small>
 
                 </div>
             </div>
-            
         </div>
+        {% empty %}
+        <div class="row">
+            <h2 class="text-center">There No Image Items</h2>
+        </div>
+        {% endfor %}
     </div>
-<script>
-
-</script>
-
-    {% empty %}
-    <div class="row">
-        <h2 class="text-center">There No Image Items</h2>
-    </div>
-    {% endfor %}
-
 </div>
-
 {% endblock %}
