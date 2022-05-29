@@ -7,8 +7,7 @@ class Category(models.Model):
     
     class meta:
         ordering = ["name"]
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
+
         
     def __str__(self):
         return self.name
@@ -22,6 +21,9 @@ class Category(models.Model):
 class Location(models.Model):
     name = models.CharField(max_length=60)
     
+    class Meta:
+        ordering = ["name"]
+    
     def __str__(self):
         return self.name
 
@@ -31,6 +33,8 @@ class Image(models.Model):
     description = models.TextField()
     location = models.ForeignKey(Location)
     pub_date = models.DateTimeField(auto_now_add=True)
+    photo = models.ImageField(upload_to = 'photos/')
+    
     
     def __str__(self):
         return self.name
