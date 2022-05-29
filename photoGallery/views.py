@@ -1,6 +1,6 @@
-from django.http  import Http404
+from django.http  import  HttpResponse, Http404
 from .models import Image, Location, Category
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def index(request):
@@ -56,3 +56,8 @@ def image(request,image_id):
     except ObjectDoesNotExist:
         raise Http404()
     return render(request,"image.html", {"image":image})
+
+def single_modal_image(request,image_id):
+
+    image_detail = get_object_or_404(Image, id=image_id)
+    return render(request,'modals.html', {'image_item':image_detail})

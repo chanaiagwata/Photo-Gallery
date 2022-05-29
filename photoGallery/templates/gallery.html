@@ -3,29 +3,35 @@
     <!--looping through photoGallery-->
     <div class="row">
         {% for image_item in gallery %}
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
             <div class="card mb-5 shadow-sm">
                 <div class="card-header" style="font-family:Raleway; font-size:24px; font-weight:700; color:#5D4037; margin-top:20px;">{{image_item.name}}</div>
                 <div class="card-body" style="width:23rem;height:40rem; margin:40px 0; font-family:Raleway; -webkit-font-smoothing:antialiased;">
                     <img src="{{image_item.photo.url}}"class="img-responsive" alt="Image">
                     <br>
-                    <p class="card-text">
-                        {{image_item.description}}
-                    </p>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalid{{image_item.id}}">View</button>
-
+                    <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+                        <p>
+                            {{image_item.description}}
+                        </p>
                     </div>
-                    <small class="text-muted">Posted : {{image_item.pub_date|timesince}} ago.</small>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#myModal{{image_item.id}}">View</button>
+                    </div>
+                    <small class="text-muted">Uploaded : {{image_item.pub_date|timesince}} ago.</small>
 
                 </div>
             </div>
         </div>
+        
         {% empty %}
         <div class="row">
             <h2 class="text-center">There No Image Items</h2>
         </div>
+
         {% endfor %}
     </div>
 </div>
 {% endblock %}
+<!--Bootstrap modal-->
+
