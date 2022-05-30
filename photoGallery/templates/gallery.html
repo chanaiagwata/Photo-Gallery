@@ -1,37 +1,78 @@
+{% load static%}
 {% block content %}
 <div class="container">
     <!--looping through photoGallery-->
     <div class="row">
-        {% for image_item in gallery %}
-        <div class="col-lg-4 col-md-4 col-sm-12 ">
-            <div class="card mb-5 shadow-sm">
-                <div class="card-header" style="font-family:Raleway; font-size:24px; font-weight:700; color:#5D4037; margin-top:20px;">{{image_item.name}}</div>
-                <div class="card-body" style="width:23rem;height:40rem; margin:40px 0; font-family:Raleway; -webkit-font-smoothing:antialiased;">
-                    <img src="{{image_item.photo.url}}"class="img-responsive" alt="Image">
-                    <br>
-                    <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
-                        <p>
-                            {{image_item.description}}
-                        </p>
-                    </div>
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#myModal{{image_item.id}}">View</button>
-                    </div>
-                    <small class="text-muted">Uploaded : {{image_item.pub_date|timesince}} ago.</small>
-
+        {% for image in gallery %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+            <div class="portfolio-wrap ">
+                <div class="portfolio-wrap hovereffect">
+                    <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                        <img src="{{image.photo.url}}"class="img-responsive" alt="Image">
+                        <div class="overlay">
+                            <h4>{{image.name}}</h4>
+                            <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+                                <p>
+                                    {{image.description}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-        
-        {% empty %}
-        <div class="row">
-            <h2 class="text-center">There No Image Items</h2>
-        </div>
-
-        {% endfor %}
+    {% empty %}
     </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <h2 class="text-center"> There are no images uploaded yet.</h2>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <!--Modal goes here-->
+    {% for image in gallery %}
+    <div class="modal fade" id="#{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Image Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <a href="{% url 'singleImage' category=image.category.name id=image.id %}"><img id="img{{image.id}}" src="{{image.photo.cdn_url}}" class="img-thumbnail" alt="Image" style="cursor:pointer"></a>
+
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class = "desc">Location</h4>
+                            <p>{{image.image_location.name}}</p>
+                            <h4 class = "desc">Category</h4>
+                            <p>{{image.image_category.name}}</p>
+                        </div>
+                        <div>
+                            <h2 class="desc">{{image.name}}</h2>
+                            <p class="desc">{{image.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="copy('img{{image.id}}')">Copy Link</button>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
 </div>
 {% endblock %}
-<!--Bootstrap modal-->
+    
+
+
 

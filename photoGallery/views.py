@@ -1,7 +1,7 @@
 from django.http  import  HttpResponse, Http404
 from .models import Image, Location, Category
 from django.shortcuts import get_object_or_404, render, redirect
-from django.core.exceptions import ObjectDoesNotExist
+
 # Create your views here.
 def index(request):
     
@@ -50,14 +50,13 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
     
-def image(request,image_id):
+def image(request,id, category):
+    locations = Location.objects.all()
+    
+    image_category = Image.objects.filter(image_category_name = category)
     try:
-        image = Image.objects.get(id = image_id)
-    except ObjectDoesNotExist:
+        image = Image.objects.get(id = id)
+    except DoesNotExist:
         raise Http404()
-    return render(request,"image.html", {"image":image})
+    return render(request,"image.html", {"image":image, "image_category":image_category, "locations":locations })
 
-def single_modal_image(request,image_id):
-
-    image_detail = get_object_or_404(Image, id=image_id)
-    return render(request,'modals.html', {'image_item':image_detail})

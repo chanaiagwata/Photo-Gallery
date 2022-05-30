@@ -17,7 +17,11 @@ class Category(models.Model):
         
     def delete_category(self):
         self.delete()
-
+    @classmethod
+    def get_category_id(cls, id):
+        category = Category.objects.get(pk = id)
+        return category
+    
 class Location(models.Model):
     name = models.CharField(max_length=60)
     
@@ -35,9 +39,9 @@ class Location(models.Model):
 
 class Image(models.Model):
     name = models.CharField(max_length =80)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey('Category')
     description = models.TextField()
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey('Location')
     pub_date = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to = 'photos/')
     
@@ -50,9 +54,10 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
         
-    def get_image_by_id(cls):
-        images = cls.objects.get(id =id)
-        return images
+    @classmethod
+    def get_image_by_id(cls,id):
+        image = cls.objects.filter(id= id).all()
+        return image
     @classmethod
     def search_by_name(cls,search_term):
         image = cls.objects.filter(name__icontains=search_term)
