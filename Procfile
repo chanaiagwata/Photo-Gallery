@@ -1,1 +1,1 @@
-web: gunicorn chanai-gallery.wsgi
+web: gunicorn photoGallery.wsgi
