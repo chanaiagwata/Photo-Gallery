@@ -16,7 +16,7 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 
-MODE=config("MODE", default="dev")
+MODE="dev"
 
 
 
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if config('MODE')=="dev":
+if MODE=="dev":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
